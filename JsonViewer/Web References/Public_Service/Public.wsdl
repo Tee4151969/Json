@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SelectDataTNS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inTNSName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="inSQL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SelectDataTNSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SelectDataTNSResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteDataTNS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inConnect" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="inSQL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteDataTNSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExecuteDataTNSResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginDomain">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="inUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="inPassword" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginDomainResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginDomainResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SelectDataTNSSoapIn">
+    <wsdl:part name="parameters" element="tns:SelectDataTNS" />
+  </wsdl:message>
+  <wsdl:message name="SelectDataTNSSoapOut">
+    <wsdl:part name="parameters" element="tns:SelectDataTNSResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteDataTNSSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteDataTNS" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteDataTNSSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteDataTNSResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginDomainSoapIn">
+    <wsdl:part name="parameters" element="tns:LoginDomain" />
+  </wsdl:message>
+  <wsdl:message name="LoginDomainSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginDomainResponse" />
+  </wsdl:message>
+  <wsdl:portType name="_PublicSoap">
+    <wsdl:operation name="SelectDataTNS">
+      <wsdl:input message="tns:SelectDataTNSSoapIn" />
+      <wsdl:output message="tns:SelectDataTNSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataTNS">
+      <wsdl:input message="tns:ExecuteDataTNSSoapIn" />
+      <wsdl:output message="tns:ExecuteDataTNSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LoginDomain">
+      <wsdl:input message="tns:LoginDomainSoapIn" />
+      <wsdl:output message="tns:LoginDomainSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="_PublicSoap" type="tns:_PublicSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectDataTNS">
+      <soap:operation soapAction="http://tempuri.org/SelectDataTNS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataTNS">
+      <soap:operation soapAction="http://tempuri.org/ExecuteDataTNS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginDomain">
+      <soap:operation soapAction="http://tempuri.org/LoginDomain" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="_PublicSoap12" type="tns:_PublicSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SelectDataTNS">
+      <soap12:operation soapAction="http://tempuri.org/SelectDataTNS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteDataTNS">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteDataTNS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LoginDomain">
+      <soap12:operation soapAction="http://tempuri.org/LoginDomain" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="_Public">
+    <wsdl:port name="_PublicSoap" binding="tns:_PublicSoap">
+      <soap:address location="http://172.16.50.91/Utility_Service_12/Public.asmx" />
+    </wsdl:port>
+    <wsdl:port name="_PublicSoap12" binding="tns:_PublicSoap12">
+      <soap12:address location="http://172.16.50.91/Utility_Service_12/Public.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
